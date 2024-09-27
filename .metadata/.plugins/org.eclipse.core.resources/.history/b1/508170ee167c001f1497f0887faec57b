@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package Exerici1;
+
+/**
+ * @author noels
+ *
+ */
+public class node {
+	
+	int inf;
+	node seg;
+	
+	
+
+}

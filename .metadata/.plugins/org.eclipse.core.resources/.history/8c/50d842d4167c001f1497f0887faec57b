@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package Exerici1;
+
+/**
+ * @author noels
+ *
+ */
+public class Node {
+	
+	int inf;
+	
+
+}

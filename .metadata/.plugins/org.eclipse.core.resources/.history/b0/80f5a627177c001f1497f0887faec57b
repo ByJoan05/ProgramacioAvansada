@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+package Exerici1;
+
+/**
+ * @author noels
+ *
+ */
+public class node {
+	
+	int inf;
+	node seg;
+	
+	public node (int inf) { this(inf, null); }
+	pubilc node (int inf, node seg) { this(inf, seg); }
+
+}
