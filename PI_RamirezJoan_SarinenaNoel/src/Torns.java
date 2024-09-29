@@ -1,4 +1,9 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Torns <E> {
     // ATRIBUTS
@@ -13,6 +18,7 @@ public class Torns <E> {
     // Invoca el mètode privat llençarà una excepció si no s’ha pogut llegir o si la llista és buida
     public Torns(String nomFitxer) {
         llistatTorns = new ArrayList<E>();
+        carregarDesdeFitxer(nomFitxer);
     }
 
     // MÈTODES
@@ -29,15 +35,25 @@ public class Torns <E> {
     }
 
     // Guarda tots els torns de la partida en un fitxer del tipus txt, podria retornar una excepció del tipus IOException.
-    public void guardarAFitxer (String nomFitxer) {
-        //TODO
+    public void guardarAFitxer (String nomFitxer) throws IOException {
+    //TODO: Hacer todo XD, me he quedado en el punto en el que no se como acceder a los datos de <E> porq no es un objeto instanciado
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter(new File(nomFitxer)));
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
+        for (Object o : llistatTorns) {
+            bw.write(o.);
+            bw.newLine();
+        }
     }
 
     // Mètode privat que llegeix un fitxer txt i inicialitzar el llistat de torns a partir del fitxer.
-    public void carregarDesdeFitxer (String nomFitxer) {
-
-
+    public void carregarDesdeFitxer (String nomFitxer) throws Exception {
+        File fitxerACargar = new File(nomFitxer);
+        if (!fitxerACargar.exists()) throw new IllegalAccessException("No existeix el fitxer a carregar");
     }
 
 }

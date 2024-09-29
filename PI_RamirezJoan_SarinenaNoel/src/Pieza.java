@@ -1,12 +1,12 @@
-public class Pieza {
+public class Pieza implements ItipoPieza {
 
     // ATRIBUTOS
-    private final char PEON = 'P';
-    private final char CABALLO = 'C';
-    private final char ALFIL = 'A';
-    private final char TORRE = 'T';
-    private final char REINA = 'Q';
-    private final char REY = 'K';
+    public final char PEON = 'P';
+    public final char CABALLO = 'C';
+    public final char ALFIL = 'A';
+    public final char TORRE = 'T';
+    public final char REINA = 'D'; // D = Dama
+    public final char REY = 'R';
     private char columna;
     private int fila;
     private char tipo;
@@ -19,23 +19,25 @@ public class Pieza {
     }
 
     // GETTERS Y SETTERS
-
-    public char getColumna() {
+    public int getColumna() {
         return columna;
+    }
+
+    @Override
+    public char getTipus() {
+        return tipo;
     }
 
     public int getFila() {
         return fila;
     }
 
-    public char getTipo() {
-        return tipo;
-    }
-
     public void setPosicion(int fila, int columna) {
+        if (columna < 65 || columna > 72 || fila < 1 || fila > 8) {
+            throw new RuntimeException("La posición no es correcta");
+        }
+        this.columna = (char) columna;
         this.fila = fila;
-        // TODO: Transformar columna de char a int
-        // --> this.columna = columna;
     }
 
     // TOSTRING
@@ -50,22 +52,18 @@ public class Pieza {
 
     // MÉTODOS
     public boolean fiJoc () {
-        // TODO: Comprobar si finaliza el juego. Es decir, pos de pieza eliminada = rey
+        if (this.tipo == REY) return true;
         return false;
     }
 
-    public void checkTipo (char tipo) {
-        String tipoCompleto = "";
-        switch (tipo) {
-            case 'P': tipoCompleto = "Peón";
-            case 'C': tipoCompleto = "Caballo";
-            case 'A': tipoCompleto = "Alfil";
-            case 'T': tipoCompleto = "Torre";
-            case 'Q': tipoCompleto = "Reyna";
-            case 'K': tipoCompleto = "Rey";
-            default: throw new IllegalArgumentException();
+    private void checkTipo (char tipo) {
+        if (tipo != PEON && tipo != CABALLO && tipo != ALFIL && tipo != TORRE && tipo != REINA && tipo != REY) {
+            throw new IllegalArgumentException("El tipus de peça no és correcte.");
         }
-        System.out.println("La pieza es de tipo: " + tipoCompleto);
+    }
+
+    public boolean toEquals (Pieza pieza) {
+        return this.columna == pieza.columna && this.fila == pieza.fila && this.tipo == pieza.tipo;
     }
 
 }
