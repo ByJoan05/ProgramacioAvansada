@@ -16,7 +16,7 @@ public class Torns <E> {
         llistatTorns = new ArrayList<E>();
     }
     // Invoca el mètode privat llençarà una excepció si no s’ha pogut llegir o si la llista és buida
-    public Torns(String nomFitxer) {
+    public Torns(String nomFitxer) throws Exception {
         llistatTorns = new ArrayList<E>();
         carregarDesdeFitxer(nomFitxer);
     }

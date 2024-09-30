@@ -54,6 +54,7 @@ public class Pieza implements ItipoPieza {
     public boolean fiJoc () {
         if (this.tipo == REY) return true;
         return false;
+        // return this.tipo == REY;
     }
 
     private void checkTipo (char tipo) {

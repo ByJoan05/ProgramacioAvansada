@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Jugador<E extends ItipoPieza> {
 
@@ -43,6 +44,19 @@ public class Jugador<E extends ItipoPieza> {
     }
 
     public boolean eliminarPiezaEnPosicion(int fila, int columna) {
+        E pieza = buscarEnPosicion(fila,columna);
+        if( pieza == null){
+            return false;
+        }
+        Iterator<E> it = piezasVivas.iterator();
+        while(it.hasNext()) {
+            E i = it.next();
+            if(pieza.equals(i)) {
+                it.remove();
+                if(i.fiJoc()) throw new FiJocException("Fi de Joc.");
+                return true;
+            }
+        }
         return false;
     }
 
