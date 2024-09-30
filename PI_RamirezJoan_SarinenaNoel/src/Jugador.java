@@ -43,7 +43,7 @@ public class Jugador<E extends ItipoPieza> {
         return null;
     }
 
-    public boolean eliminarPiezaEnPosicion(int fila, int columna) {
+    public boolean eliminarPiezaEnPosicion(int fila, int columna) throws FiJocException {
         E pieza = buscarEnPosicion(fila,columna);
         if( pieza == null){
             return false;
